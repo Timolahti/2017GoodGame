@@ -19,5 +19,6 @@ public class Game
         square.setColor(Color.RED);
         gc.add(square);
         frame.show();
+        
 	}
 }
