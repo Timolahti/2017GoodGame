@@ -4,7 +4,11 @@ import acm.util.*;         // RandomGenerator
 import java.applet.*;      // AudioClip
 import java.awt.*;         // Color
 import java.awt.event.*;   // MouseEvent
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
+import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 
 public class Game
@@ -13,11 +17,10 @@ public class Game
 	{
 	    GCanvas gc = new GCanvas();
         JFrame frame = new JFrame();
+        
         frame.getContentPane().add(BorderLayout.CENTER, gc);
-        GRect square = new GRect(100, 100, 200, 200);
-        square.setFilled(true);
-        square.setColor(Color.RED);
-        gc.add(square);
+        GImage startScreen = new GImage("start.png");
+        gc.add(startScreen);
         frame.show();
         
 	}
