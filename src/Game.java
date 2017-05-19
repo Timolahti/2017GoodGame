@@ -15,13 +15,18 @@ public class Game
 {
 	public static void main(String[] args) 
 	{
+		int width = 1280;
+		int height = 720;
+		
 	    GCanvas gc = new GCanvas();
         JFrame frame = new JFrame();
+        frame.setSize(width, height);
         
         frame.getContentPane().add(BorderLayout.CENTER, gc);
         GImage startScreen = new GImage("start.png");
         gc.add(startScreen);
         frame.show();
+        frame.setDefaultCloseOperation(frame.EXIT_ON_CLOSE);
         
 	}
 }
