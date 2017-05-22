@@ -26,10 +26,12 @@ public class Game extends acm.program.GraphicsProgram
 	    gc.setBackground(java.awt.Color.BLACK);
         JFrame frame = new JFrame();
         frame.setSize(width, height);
+
         
         frame.getContentPane().add(BorderLayout.CENTER, gc);
         GImage startScreen = new GImage("start.png");
         
+       // player newt = new player("Newt.png", 600.0, 3.0);
         frame.show();
         frame.setDefaultCloseOperation(frame.EXIT_ON_CLOSE);
         
@@ -107,6 +109,5 @@ public class Game extends acm.program.GraphicsProgram
 		}
 		//Contains the 
 	}
-	
 }
 
