@@ -75,24 +75,13 @@ public class Game extends acm.program.GraphicsProgram
 		source.setPixelArray(newpixels);
 	}
 	
-	private class newton extends GImage
-	{
+	private class player extends GImage {
 
-		public newton(Image image, double x, double y) {
+		public player(Image image, double x, double y) {
 			super(image, x, y);
 			// TODO Auto-generated constructor stub
 		}
-		//main class for player character, contains movements, fighting and health
-	}
-	
-	private class leibniz extends GImage 
-	{
-
-		public leibniz(Image image, double x, double y) {
-			super(image, x, y);
-			// TODO Auto-generated constructor stub
-		}
-		//overrides newton presets for starting direction, placement and assets but is otherwise the same 
+		
 	}
 	
 	private class healthbar extends GObject
