@@ -26,15 +26,12 @@ public class Game extends acm.program.GraphicsProgram
 	    gc.setBackground(java.awt.Color.BLACK);
         JFrame frame = new JFrame();
         frame.setSize(width, height);
-        
-        int height = 720;
-        int width = 1280;
-        
-        frame.setSize(width, height);
+
         
         frame.getContentPane().add(BorderLayout.CENTER, gc);
         GImage startScreen = new GImage("start.png");
         
+       // player newt = new player("Newt.png", 600.0, 3.0);
         frame.show();
         frame.setDefaultCloseOperation(frame.EXIT_ON_CLOSE);
         
@@ -80,29 +77,4 @@ public class Game extends acm.program.GraphicsProgram
 		source.setPixelArray(newpixels);
 	}
 	
-	private class player extends GImage {
-
-		public player(Image image, double x, double y) {
-			super(image, x, y);
-			// TODO Auto-generated constructor stub
-		}
-		
-	}
-	
-	private class healthbar extends GObject
-	{
-
-		@Override
-		public GRectangle getBounds() {
-			// TODO Auto-generated method stub
-			return null;
-		}
-
-		@Override
-		protected void paint2d(Graphics2D g) {
-			// TODO Auto-generated method stub
-			
-		}
-		//Contains the 
-	}
 }
