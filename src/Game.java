@@ -85,7 +85,7 @@ public class Game extends acm.program.GraphicsProgram
 		//main class for player character, contains movements, fighting and health
 	}
 	
-	private class leibniz extends newton 
+	private class leibniz extends GImage 
 	{
 
 		public leibniz(Image image, double x, double y) {
