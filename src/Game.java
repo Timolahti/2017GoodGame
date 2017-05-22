@@ -18,6 +18,11 @@ public class Game
 	    GCanvas gc = new GCanvas();
         JFrame frame = new JFrame();
         
+        int height = 720;
+        int width = 1280;
+        
+        frame.setSize(width, height);
+        
         frame.getContentPane().add(BorderLayout.CENTER, gc);
         GImage startScreen = new GImage("start.png");
         gc.add(startScreen);
