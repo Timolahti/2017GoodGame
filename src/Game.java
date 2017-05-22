@@ -22,5 +22,6 @@ public class Game
         GImage startScreen = new GImage("start.png");
         gc.add(startScreen);
         frame.show();
+        
 	}
 }
