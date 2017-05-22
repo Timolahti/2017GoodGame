@@ -75,6 +75,13 @@ public class Game extends acm.program.GraphicsProgram
 		source.setPixelArray(newpixels);
 	}
 	
+	public void keyPressed(KeyEvent e) {
+		char key = e.getKeyChar();
+		
+		
+		
+	}
+	
 	private class player extends GImage {
 
 		public player(Image image, double x, double y) {
@@ -100,4 +107,6 @@ public class Game extends acm.program.GraphicsProgram
 		}
 		//Contains the 
 	}
+	
 }
+
