@@ -19,7 +19,7 @@ public class Game extends acm.program.GraphicsProgram
 	public static void main(String[] args) 
 	{
 		int width = 1280;
-		int height = 730;
+		int height = 750;
 		int count = 0;
 		
 	    GCanvas gc = new GCanvas();
