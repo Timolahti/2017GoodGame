@@ -77,4 +77,37 @@ public class Game extends acm.program.GraphicsProgram
 		source.setPixelArray(newpixels);
 	}
 	
+	public void keyPressed(KeyEvent e) {
+		char key = e.getKeyChar();
+		
+		
+		
+	}
+	
+	private class player extends GImage {
+
+		public player(Image image, double x, double y) {
+			super(image, x, y);
+			// TODO Auto-generated constructor stub
+		}
+		
+	}
+	
+	private class healthbar extends GObject
+	{
+
+		@Override
+		public GRectangle getBounds() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		protected void paint2d(Graphics2D g) {
+			// TODO Auto-generated method stub
+			
+		}
+		//Contains the 
+	}
 }
+
