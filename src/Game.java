@@ -61,6 +61,8 @@ public class Game extends acm.program.GraphicsProgram implements KeyListener
         GImage startScreen = new GImage("start.png");
         
         frame.show();
+        //frame.setFocusable(true);
+        gc.setFocusable(true);
         frame.setDefaultCloseOperation(frame.EXIT_ON_CLOSE);
         
         gc.addKeyListener(listener);
