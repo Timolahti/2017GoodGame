@@ -14,26 +14,56 @@ import javax.swing.JFrame;
 
 import com.sun.prism.paint.Color;
 
-public class Game extends acm.program.GraphicsProgram
+public class Game extends acm.program.GraphicsProgram implements KeyListener
 {
+	private static Player newt = new Player("Newt.png", 300, 480);
+	private static Player leib = new Player("Leib.png", 1280 - 300, 480);
+	
 	public static void main(String[] args) 
 	{
 		int width = 1280;
 		int height = 750;
 		int count = 0;
 		
+		KeyListener listener = new KeyListener() {	//key control commands
+			
+		    public void keyPressed(KeyEvent e) {
+		    	int id = e.getID();	//this is all to test the key listeners
+		        String keyString;
+		        if (id == KeyEvent.KEY_PRESSED) {
+		            char c = e.getKeyChar();
+		            keyString = "key character = '" + c + "'";
+		        }
+		        else keyString = "";
+		        System.out.println(keyString);
+		    }
+
+			@Override
+			public void keyTyped(KeyEvent e) {
+				// Ignore
+				
+			}
+
+			@Override
+			public void keyReleased(KeyEvent e) {
+				// Ignore
+				
+			}
+
+		};
+		
 	    GCanvas gc = new GCanvas();
 	    gc.setBackground(java.awt.Color.BLACK);
         JFrame frame = new JFrame();
         frame.setSize(width, height);
-
         
         frame.getContentPane().add(BorderLayout.CENTER, gc);
         GImage startScreen = new GImage("start.png");
         
-       // player newt = new player("Newt.png", 600.0, 3.0);
         frame.show();
         frame.setDefaultCloseOperation(frame.EXIT_ON_CLOSE);
+        
+        gc.addKeyListener(listener);
         
         while (count < 51) {
         	setOpacity(startScreen, count*5);
@@ -54,6 +84,8 @@ public class Game extends acm.program.GraphicsProgram
         
         gc.remove(startScreen);
         
+        gc.add(newt);
+        gc.add(leib);
 	}
 	
 	public static void setOpacity(GImage source, int alpha) {
@@ -77,37 +109,17 @@ public class Game extends acm.program.GraphicsProgram
 		source.setPixelArray(newpixels);
 	}
 	
-	public void keyPressed(KeyEvent e) {
-		char key = e.getKeyChar();
-		
-		
-		
-	}
+//	public void keyPressed(KeyEvent e) { 
+//		int id = e.getID();	//this is all to test the key listeners
+//        String keyString;
+//        if (id == KeyEvent.KEY_PRESSED) {
+//            char c = e.getKeyChar();
+//            keyString = "key character = '" + c + "'";
+//        }
+//        else keyString = "";
+//        System.out.println(keyString);
+//	}
 	
-	private class player extends GImage {
-
-		public player(Image image, double x, double y) {
-			super(image, x, y);
-			// TODO Auto-generated constructor stub
-		}
 		
-	}
-	
-	private class healthbar extends GObject
-	{
-
-		@Override
-		public GRectangle getBounds() {
-			// TODO Auto-generated method stub
-			return null;
-		}
-
-		@Override
-		protected void paint2d(Graphics2D g) {
-			// TODO Auto-generated method stub
-			
-		}
-		//Contains the 
-	}
 }
 
