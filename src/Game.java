@@ -39,8 +39,8 @@ public class Game extends acm.program.GraphicsProgram implements KeyListener
 //		        }
 		    	switch (id) {
 		    		case KeyEvent.VK_SPACE: start = true;
-			    	case KeyEvent.VK_A: newt.move(-5);
-			    	case KeyEvent.VK_D: newt.move(5);
+			    	case KeyEvent.VK_A: newt.move(-1);
+			    	case KeyEvent.VK_D: newt.move(1);
 			    	case KeyEvent.VK_W: newt.jump(""); //jump image in making
 			    	case KeyEvent.VK_S: {
 			    		newt.setImage(""); //crouching image still in making

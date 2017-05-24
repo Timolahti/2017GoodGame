@@ -26,7 +26,7 @@ public class Player extends GImage {
     
     
     public void move(int move) {
-    	setLocation(super.getX() + move, y);
+    	setLocation(super.getX() + move, getY());
     	pause(50);
     }
     
@@ -34,7 +34,17 @@ public class Player extends GImage {
      * Jumps
      */
     public void jump(String image) {
-    	
+        while(getY() < getY() + 200)
+        {
+            setLocation(getX(), getY() + 10);
+            pause(20);
+        }
+        
+        while(getY() > y)
+        {
+            setLocation(getX(), getY() - 10);
+            pause(20);
+        }
     }
     
     /*
