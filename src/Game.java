@@ -16,8 +16,8 @@ import com.sun.prism.paint.Color;
 
 public class Game extends acm.program.GraphicsProgram implements KeyListener
 {
-	private static Player newt = new Player("Newt.png", 100, 480);
-	private static Player leib = new Player("Leib.png", 1100, 480);
+	private static Player newt = new Player("Newt.png", 70, 250);
+	private static Player leib = new Player("Leib.png", 1100, 250);
 	
 	public static void main(String[] args) 
 	{
@@ -33,6 +33,8 @@ public class Game extends acm.program.GraphicsProgram implements KeyListener
 		        if (id == KeyEvent.KEY_PRESSED) {
 		            char c = e.getKeyChar();
 		            keyString = "key character = '" + c + "'";
+		            if (e.equals('e')) {
+		            }
 		        }
 		        else keyString = "";
 		        System.out.println(keyString);
@@ -64,11 +66,13 @@ public class Game extends acm.program.GraphicsProgram implements KeyListener
         gc.add(leib);
         
         frame.show();
-        //frame.setFocusable(true);
         gc.setFocusable(true);
         frame.setDefaultCloseOperation(frame.EXIT_ON_CLOSE);
         
         gc.addKeyListener(listener);
+        
+        gc.add(newt);
+        gc.add(leib);
         
         while (count < 51) {
         	setOpacity(startScreen, count*5);
@@ -88,7 +92,6 @@ public class Game extends acm.program.GraphicsProgram implements KeyListener
         }
         
         gc.remove(startScreen);
-
 	}
 	
 	public static void setOpacity(GImage source, int alpha) {
@@ -112,17 +115,5 @@ public class Game extends acm.program.GraphicsProgram implements KeyListener
 		source.setPixelArray(newpixels);
 	}
 	
-//	public void keyPressed(KeyEvent e) { 
-//		int id = e.getID();	//this is all to test the key listeners
-//        String keyString;
-//        if (id == KeyEvent.KEY_PRESSED) {
-//            char c = e.getKeyChar();
-//            keyString = "key character = '" + c + "'";
-//        }
-//        else keyString = "";
-//        System.out.println(keyString);
-//	}
-	
-		
 }
 
