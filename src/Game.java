@@ -19,6 +19,10 @@ public class Game extends acm.program.GraphicsProgram implements KeyListener
 	private static Player newt = new Player("Newt.png", 300, 480);
 	private static Player leib = new Player("Leib.png", 1280 - 300, 480);
 	
+	private static boolean newtIsPunching = false;
+	private static boolean leibIsPunching = false;
+	private static boolean start = false;
+	
 	public static void main(String[] args) 
 	{
 		int width = 1280;
@@ -28,16 +32,23 @@ public class Game extends acm.program.GraphicsProgram implements KeyListener
 		KeyListener listener = new KeyListener() {	//key control commands
 			
 		    public void keyPressed(KeyEvent e) {
-		    	int id = e.getID();	//this is all to test the key listeners
-		        String keyString;
-		        if (id == KeyEvent.KEY_PRESSED) {
-		            char c = e.getKeyChar();
-		            keyString = "key character = '" + c + "'";
-		            if (e.equals('e')) {
-		            }
-		        }
-		        else keyString = "";
-		        System.out.println(keyString);
+		    	int id = e.getKeyCode();	//this is all to test the key listeners
+//		        if (id == KeyEvent.VK_E) {
+//		        	
+//		        }
+		    	switch (id) {
+		    		case KeyEvent.VK_SPACE: start = true;
+			    	case KeyEvent.VK_A: newt.move(-5);
+			    	case KeyEvent.VK_D: newt.move(5);
+			    	case KeyEvent.VK_W: newt.jump(""); //jump image in making
+			    	case KeyEvent.VK_S: {
+			    		newt.setImage(""); //crouching image still in making
+			    	}
+			    	case KeyEvent.VK_F: {
+			    		newt.punch("", newtIsPunching); //punch image in making
+			    		
+			    	}
+		    	}
 		    }
 
 			@Override
@@ -78,8 +89,9 @@ public class Game extends acm.program.GraphicsProgram implements KeyListener
         	count++;
         }
         
-        //spacebar start code
-        startScreen.pause(2000);
+        while (start == false) {
+        	startScreen.pause(1);
+        }
         
         while (count > 0) {
         	setOpacity(startScreen, count*5);

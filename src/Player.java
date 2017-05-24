@@ -17,10 +17,19 @@ public class Player extends GImage {
     }
     
     /*
+     * Jumps
+     */
+    public void jump(String image) {
+    	
+    }
+    
+    /*
      * Punches. Execute punching animation. Returns the boolean value isPunching. In Game.java after executing the punch and hitbox code
      * immediately set isPunching false
      */
-    public boolean punch(GImage punch, boolean isPunching) {
+    public boolean punch(String image, boolean isPunching) {
+    	setImage(image);
+    	
     	return isPunching = true;
     }
     
