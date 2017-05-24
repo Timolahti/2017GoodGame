@@ -111,11 +111,7 @@ public class Game extends acm.program.GraphicsProgram implements KeyListener
         
         gc.add(background);
         background.sendToBack();
-        for(int i = 0; i< 200; i++)
-        {
-            newt.move(5);
-            newt.pause(50);
-        }
+        
 
 	}
 	
