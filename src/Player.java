@@ -25,8 +25,9 @@ public class Player extends GImage {
     
     
     
-    public void move(int move) {
-    	setLocation(x+move, y);
+    public void move(double move) {
+    	setLocation(getX() + move, getY());
+    	pause(5);
     }
     
     /*
@@ -42,7 +43,7 @@ public class Player extends GImage {
      */
     public boolean punch(String image, boolean isPunching) {
     	setImage(image);
-    	
+    	pause(50);
     	return isPunching = true;
     }
     

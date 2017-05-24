@@ -39,15 +39,23 @@ public class Game extends acm.program.GraphicsProgram implements KeyListener
 //		        }
 		    	switch (id) {
 		    		case KeyEvent.VK_SPACE: start = true;
-			    	case KeyEvent.VK_A: newt.move(-5);
-			    	case KeyEvent.VK_D: newt.move(5);
+			    	case KeyEvent.VK_A: {
+			    		newt.move(-10.0);
+			    		newt.pause(50);
+			    	}
+			    	case KeyEvent.VK_D: {
+			    		newt.move(10);
+			    		newt.pause(50);
+			    	}
 			    	case KeyEvent.VK_W: newt.jump(""); //jump image in making
 			    	case KeyEvent.VK_S: {
 			    		newt.setImage(""); //crouching image still in making
 			    	}
 			    	case KeyEvent.VK_F: {
 			    		newt.punch("", newtIsPunching); //punch image in making
-			    		
+			    		newt.setImage("Newt.png");
+			    		newt.pause(50);
+			    		//GObject obj = getElementAt(newt.getX(), newt.getY(), newt.getX(), newt.getBottomY(), newt.getRightX(), newt.getY(), newt.getRightX(), newt.getBottomY());
 			    	}
 		    	}
 		    }
@@ -84,8 +92,6 @@ public class Game extends acm.program.GraphicsProgram implements KeyListener
         newt.setInitialLocation(70, 250);
         leib.setInitialLocation(1100, 250);
         
-        gc.add(newt);
-        gc.add(leib);
         
         while (count < 51) {
         	setOpacity(startScreen, count*5);
@@ -109,13 +115,11 @@ public class Game extends acm.program.GraphicsProgram implements KeyListener
         
         gc.remove(startScreen);
         
+        gc.add(newt);
+        gc.add(leib);
+        
         gc.add(background);
         background.sendToBack();
-        for(int i = 0; i< 200; i++)
-        {
-            newt.move(5);
-            newt.pause(50);
-        }
 
 	}
 	
