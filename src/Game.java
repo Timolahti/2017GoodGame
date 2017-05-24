@@ -17,8 +17,8 @@ import com.sun.prism.paint.Color;
 public class Game extends acm.program.GraphicsProgram implements KeyListener
 {
 	private static GImage background = new GImage("Background.jpg");
-	private static Player newt = new Player("Newt.png", 70, 250);
-	private static Player leib = new Player("Leib.png", 1100, 250);
+	private static Player newt = new Player("Newt.png");
+	private static Player leib = new Player("Leib.png");
 	
 	public static void main(String[] args) 
 	{
@@ -63,8 +63,6 @@ public class Game extends acm.program.GraphicsProgram implements KeyListener
         frame.getContentPane().add(BorderLayout.CENTER, gc);
         GImage startScreen = new GImage("start.png");
         
-        gc.add(newt);
-        gc.add(leib);
         
         frame.show();
         gc.setFocusable(true);
@@ -72,12 +70,16 @@ public class Game extends acm.program.GraphicsProgram implements KeyListener
         
         gc.addKeyListener(listener);
         
+        newt.setInitialLocation(70, 250);
+        leib.setInitialLocation(1100, 250);
+        
         gc.add(newt);
         gc.add(leib);
         
         while (count < 51) {
         	setOpacity(startScreen, count*5);
         	gc.add(startScreen);
+        	startScreen.sendToBack();
         	startScreen.pause(50);
         	count++;
         }
@@ -88,6 +90,7 @@ public class Game extends acm.program.GraphicsProgram implements KeyListener
         while (count > 0) {
         	setOpacity(startScreen, count*5);
         	gc.add(startScreen);
+        	startScreen.sendToBack();
         	startScreen.pause(50);
         	count--;
         }
@@ -95,6 +98,12 @@ public class Game extends acm.program.GraphicsProgram implements KeyListener
         gc.remove(startScreen);
         
         gc.add(background);
+        background.sendToBack();
+        for(int i = 0; i< 200; i++)
+        {
+            newt.move(5);
+            newt.pause(50);
+        }
 
 	}
 	

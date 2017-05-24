@@ -3,17 +3,30 @@ import acm.graphics.GImage;
 public class Player extends GImage {
 	
 	private int health = 9;
+	private int x;
+	private int y;
 
-    public Player(String image, int x, int y) {
-        super(image, x, y);
+    public Player(String image) {
+        
+        super(image);
+        
         // TODO Auto-generated constructor stub
     }
     
     /*
      * Moves the player character sideways the appropriate distance 
      */
-    public void move(int x) {
-    	
+    public void setInitialLocation(int a, int b)
+    {
+        super.setLocation(a, b);
+        x = a;
+        y = b;
+    }
+    
+    
+    
+    public void move(int move) {
+    	setLocation(x+move, y);
     }
     
     /*
