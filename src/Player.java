@@ -28,6 +28,7 @@ public class Player extends GImage {
     public void move(double move) {
     	setLocation(getX() + move, getY());
     	pause(5);
+
     }
     
     /*
