@@ -16,8 +16,9 @@ import com.sun.prism.paint.Color;
 
 public class Game extends acm.program.GraphicsProgram implements KeyListener
 {
-	private static Player newt = new Player("Newt.png", 300, 480);
-	private static Player leib = new Player("Leib.png", 1280 - 300, 480);
+	private static Player newt = new Player("Newt.png", 100, 480);
+	private static Player leib = new Player("Leib.png", 1100
+	        , 480);
 	
 	public static void main(String[] args) 
 	{
@@ -60,6 +61,9 @@ public class Game extends acm.program.GraphicsProgram implements KeyListener
         frame.getContentPane().add(BorderLayout.CENTER, gc);
         GImage startScreen = new GImage("start.png");
         
+        gc.add(newt);
+        gc.add(leib);
+        
         frame.show();
         //frame.setFocusable(true);
         gc.setFocusable(true);
@@ -85,9 +89,7 @@ public class Game extends acm.program.GraphicsProgram implements KeyListener
         }
         
         gc.remove(startScreen);
-        
-        gc.add(newt);
-        gc.add(leib);
+
 	}
 	
 	public static void setOpacity(GImage source, int alpha) {
