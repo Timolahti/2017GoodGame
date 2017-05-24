@@ -34,7 +34,6 @@ public class Game extends acm.program.GraphicsProgram implements KeyListener
 		            char c = e.getKeyChar();
 		            keyString = "key character = '" + c + "'";
 		            if (e.equals('e')) {
-		            	newt.die("Leib.png", false);
 		            }
 		        }
 		        else keyString = "";
@@ -69,13 +68,12 @@ public class Game extends acm.program.GraphicsProgram implements KeyListener
         
         gc.addKeyListener(listener);
         
+        gc.add(newt);
+        gc.add(leib);
+        
         while (count < 51) {
         	setOpacity(startScreen, count*5);
-        	setOpacity(newt, count*5);
-        	setOpacity(leib, count*5);
         	gc.add(startScreen);
-        	gc.add(newt);
-            gc.add(leib);
         	startScreen.pause(50);
         	count++;
         }
@@ -91,6 +89,7 @@ public class Game extends acm.program.GraphicsProgram implements KeyListener
         }
         
         gc.remove(startScreen);
+        
 	}
 	
 	public static void setOpacity(GImage source, int alpha) {
