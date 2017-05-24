@@ -17,8 +17,7 @@ import com.sun.prism.paint.Color;
 public class Game extends acm.program.GraphicsProgram implements KeyListener
 {
 	private static Player newt = new Player("Newt.png", 100, 480);
-	private static Player leib = new Player("Leib.png", 1100
-	        , 480);
+	private static Player leib = new Player("Leib.png", 1100, 480);
 	
 	public static void main(String[] args) 
 	{
