@@ -3,24 +3,59 @@ import acm.graphics.GImage;
 public class Player extends GImage {
 	
 	private int health = 9;
+	private int x;
+	private int y;
 
-    public Player(String image, int x, int y) {
-        super(image, x, y);
+    public Player(String image) {
+        
+        super(image);
+        
         // TODO Auto-generated constructor stub
     }
     
     /*
      * Moves the player character sideways the appropriate distance 
      */
-    public void move(int x) {
-    	
+    public void setInitialLocation(int a, int b)
+    {
+        super.setLocation(a, b);
+        x = a;
+        y = b;
+    }
+    
+    
+    
+
+    public void move(double move) {
+    	setLocation(getX() + move, getY());
+    	pause(5);
+
+    }
+    
+    /*
+     * Jumps
+     */
+    public void jump(String image) {
+        while(getY() < getY() + 200)
+        {
+            setLocation(getX(), getY() + 10);
+            pause(20);
+        }
+        
+        while(getY() > y)
+        {
+            setLocation(getX(), getY() - 10);
+            pause(20);
+        }
     }
     
     /*
      * Punches. Execute punching animation. Returns the boolean value isPunching. In Game.java after executing the punch and hitbox code
      * immediately set isPunching false
      */
-    public boolean punch(GImage punch, boolean isPunching) {
+    public boolean punch(String image, boolean isPunching) {
+    	setImage(image);
+    	pause(50);
     	return isPunching = true;
     }
     
