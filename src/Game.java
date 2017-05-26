@@ -98,17 +98,9 @@ public class Game extends acm.program.GraphicsProgram implements KeyListener
         	count++;
         }
         
-<<<<<<< HEAD
         while (start == false) {
         	startScreen.pause(1000);
         }
-        startScreen.pause(200);
-=======
-
-        while (start == false) {
-        	startScreen.pause(10);
-        }
->>>>>>> 18516c5449047d5cca9359c86997044e8a9a1d53
         
         while (count > 0) {
         	setOpacity(startScreen, count*5);
