@@ -34,18 +34,16 @@ public class Game extends acm.program.GraphicsProgram implements KeyListener
 			
 		    public void keyPressed(KeyEvent e) {
 		    	int id = e.getKeyCode();	//this is all to test the key listeners
-//		        if (id == KeyEvent.VK_E) {
-//		        	
-//		        }
+		    	
 		    	switch (id) {
 		    		case KeyEvent.VK_SPACE: start = true;
 			    	case KeyEvent.VK_A: {
 			    		newt.move(-10.0);
-			    		newt.pause(50);
+			    		newt.pause(20);
 			    	}
 			    	case KeyEvent.VK_D: {
 			    		newt.move(10);
-			    		newt.pause(50);
+			    		newt.pause(20);
 			    	}
 			    	case KeyEvent.VK_W: newt.jump(""); //jump image in making
 			    	case KeyEvent.VK_S: {
@@ -53,9 +51,8 @@ public class Game extends acm.program.GraphicsProgram implements KeyListener
 			    	}
 			    	case KeyEvent.VK_F: {
 			    		newt.punch("", newtIsPunching); //punch image in making
+			    		newt.pause(20);
 			    		newt.setImage("Newt.png");
-			    		newt.pause(50);
-			    		//GObject obj = getElementAt(newt.getX(), newt.getY(), newt.getX(), newt.getBottomY(), newt.getRightX(), newt.getY(), newt.getRightX(), newt.getBottomY());
 			    	}
 		    	}
 		    }
