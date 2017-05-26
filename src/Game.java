@@ -82,11 +82,11 @@ public class Game extends acm.program.GraphicsProgram implements KeyListener
         
         frame.getContentPane().add(BorderLayout.CENTER, gc);
         GImage startScreen = new GImage("start.png");
-        
 
         //add the characters to screen
         gc.add(newt);
         gc.add(leib);
+
 
         
         frame.show();
@@ -98,7 +98,6 @@ public class Game extends acm.program.GraphicsProgram implements KeyListener
         
         newt.setInitialLocation(70, 250);
         leib.setInitialLocation(1100, 250);
-        
 
         
         while (count < 51) {
@@ -126,7 +125,7 @@ public class Game extends acm.program.GraphicsProgram implements KeyListener
 
        // healthBarNewton healthNewt = new healthBarNewton (100,100, 50, 20);
         //gc.add(healthNewt);
-        
+
 
         gc.add(newt);
         gc.add(leib);
