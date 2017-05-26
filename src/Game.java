@@ -83,11 +83,6 @@ public class Game extends acm.program.GraphicsProgram implements KeyListener
         frame.getContentPane().add(BorderLayout.CENTER, gc);
         GImage startScreen = new GImage("start.png");
 
-        //add the characters to screen
-        gc.add(newt);
-        gc.add(leib);
-
-
         
         frame.show();
         gc.setFocusable(true);
@@ -122,9 +117,11 @@ public class Game extends acm.program.GraphicsProgram implements KeyListener
         
         gc.remove(startScreen);
         
-
-       // healthBarNewton healthNewt = new healthBarNewton (100,100, 50, 20);
-        //gc.add(healthNewt);
+       //creating healthBar for newton
+       healthBarNewton healthNewt = new healthBarNewton (100,100, 100, 30);
+       healthNewt.setFillColor(java.awt.Color.RED);
+       
+       gc.add(healthNewt);
 
 
         gc.add(newt);
