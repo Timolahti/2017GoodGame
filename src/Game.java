@@ -101,7 +101,7 @@ public class Game extends acm.program.GraphicsProgram implements KeyListener
         }
         
         while (start == false) {
-        	startScreen.pause(1);
+        	startScreen.pause(10);
         }
         
         while (count > 0) {
