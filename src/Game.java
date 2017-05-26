@@ -34,10 +34,8 @@ public class Game extends acm.program.GraphicsProgram implements KeyListener
 			
 		    public void keyPressed(KeyEvent e) {
 		    	int id = e.getKeyCode();	//this is all to test the key listeners
-		    	
+		    	System.out.println("thingu is " + e.getKeyChar());
 		    	switch (id) {
-		    		case KeyEvent.VK_SPACE: start = true;
-
 			    	case KeyEvent.VK_A: {
 			    		newt.move(-10.0);
 			    		newt.pause(20);
@@ -60,8 +58,10 @@ public class Game extends acm.program.GraphicsProgram implements KeyListener
 
 			@Override
 			public void keyTyped(KeyEvent e) {
-				// Ignore
-				
+				int id = e.getKeyCode();
+				if (id == KeyEvent.VK_SPACE) {
+					start = true;
+				}
 			}
 
 			@Override
@@ -100,6 +100,7 @@ public class Game extends acm.program.GraphicsProgram implements KeyListener
         	count++;
         }
         
+
         while (start == false) {
         	startScreen.pause(10);
         }
