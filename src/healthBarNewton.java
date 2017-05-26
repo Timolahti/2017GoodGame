@@ -15,6 +15,8 @@ public class healthBarNewton extends GRect {
         // TODO Auto-generated method stub
         return null;
     }
+    
+    
 
     @Override
     protected void paint2d(Graphics2D g) {
