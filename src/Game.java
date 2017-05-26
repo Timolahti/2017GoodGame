@@ -37,6 +37,7 @@ public class Game extends acm.program.GraphicsProgram implements KeyListener
 		    	
 		    	switch (id) {
 		    		case KeyEvent.VK_SPACE: start = true;
+
 			    	case KeyEvent.VK_A: {
 			    		newt.move(-10.0);
 			    		newt.pause(20);
@@ -78,17 +79,18 @@ public class Game extends acm.program.GraphicsProgram implements KeyListener
         
         frame.getContentPane().add(BorderLayout.CENTER, gc);
         GImage startScreen = new GImage("start.png");
-        
+
         
         frame.show();
         gc.setFocusable(true);
         frame.setDefaultCloseOperation(frame.EXIT_ON_CLOSE);
         
         gc.addKeyListener(listener);
+
         
         newt.setInitialLocation(70, 250);
         leib.setInitialLocation(1100, 250);
-        
+
         
         while (count < 51) {
         	setOpacity(startScreen, count*5);
@@ -112,11 +114,19 @@ public class Game extends acm.program.GraphicsProgram implements KeyListener
         
         gc.remove(startScreen);
         
+       //creating healthBar for newton
+       healthBarNewton healthNewt = new healthBarNewton (100,100, 100, 30);
+       healthNewt.setFillColor(java.awt.Color.RED);
+       
+       gc.add(healthNewt);
+
+
         gc.add(newt);
         gc.add(leib);
         
         gc.add(background);
         background.sendToBack();
+
 
 	}
 	
