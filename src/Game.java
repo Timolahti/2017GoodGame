@@ -99,6 +99,7 @@ public class Game extends acm.program.GraphicsProgram implements KeyListener
         }
         
 
+
         while (start == false) {
         	startScreen.pause(10);
         }
