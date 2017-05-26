@@ -114,12 +114,12 @@ public class Game extends acm.program.GraphicsProgram implements KeyListener
         
         gc.remove(startScreen);
         
-       //creating healthBar for newton
-       healthBarNewton healthNewt = new healthBarNewton (100,100, 100, 30);
-       healthNewt.setFillColor(java.awt.Color.RED);
+       //creating healthBar for newton --- lia code
        
+       healthBarNewton healthNewt = new healthBarNewton (100,100, 100, 30);
+       healthNewt.setFillColor(java.awt.Color.GREEN);
        gc.add(healthNewt);
-
+       
 
         gc.add(newt);
         gc.add(leib);
