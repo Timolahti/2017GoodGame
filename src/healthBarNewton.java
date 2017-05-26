@@ -10,6 +10,7 @@ public class healthBarNewton extends GRect {
         GRect backRectNewt = new GRect (100,100, 100, 30);
         backRectNewt.setFillColor(java.awt.Color.RED);
         backRectNewt.sendToBack();
+        System.out.println("Newton healthNewt bar print");
         // TODO Auto-generated constructor stub
     }
 
