@@ -83,16 +83,23 @@ public class Game extends acm.program.GraphicsProgram implements KeyListener
         frame.getContentPane().add(BorderLayout.CENTER, gc);
         GImage startScreen = new GImage("start.png");
         
+
+        //add the characters to screen
+        gc.add(newt);
+        gc.add(leib);
+
         
         frame.show();
         gc.setFocusable(true);
         frame.setDefaultCloseOperation(frame.EXIT_ON_CLOSE);
         
         gc.addKeyListener(listener);
+
         
         newt.setInitialLocation(70, 250);
         leib.setInitialLocation(1100, 250);
         
+
         
         while (count < 51) {
         	setOpacity(startScreen, count*5);
@@ -116,11 +123,17 @@ public class Game extends acm.program.GraphicsProgram implements KeyListener
         
         gc.remove(startScreen);
         
+
+       // healthBarNewton healthNewt = new healthBarNewton (100,100, 50, 20);
+        //gc.add(healthNewt);
+        
+
         gc.add(newt);
         gc.add(leib);
         
         gc.add(background);
         background.sendToBack();
+
 
 	}
 	
