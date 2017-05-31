@@ -41,39 +41,23 @@ public class Game extends acm.program.GraphicsProgram implements KeyListener
 		KeyListener listener = new KeyListener() {	//key control commands
 			
 		    public void keyPressed(KeyEvent e) {
-		    	int id = e.getKeyCode();	//this is all to test the key listeners
-		    	System.out.println("thingu is " + e.getKeyChar());
-		    	start = true;
-		    	switch (id) {
-			    	case KeyEvent.VK_A: {
-			    		newt.move(-10.0);
-			    		newt.pause(20);
-			    	}
-			    	case KeyEvent.VK_D: {
-			    		newt.move(10);
-			    		newt.pause(20);
-			    	}
-			    	case KeyEvent.VK_W: newt.jump(""); //jump image in making
-			    	case KeyEvent.VK_S: {
-			    		newt.setImage(""); //crouching image still in making
-			    	}
-			    	case KeyEvent.VK_F: {
-			    		newt.punch("", newtIsPunching); //punch image in making
-			    		newt.pause(20);
-			    		newt.setImage("Newt.png");
-			    	}
-		    	}
+		    	
 		    }
 
 			@Override
 			public void keyTyped(KeyEvent e) {
-				if (e.getKeyCode() == KeyEvent.VK_W) newt.jump("");
+				int id = e.getKeyCode();	//this is all to test the key listeners
+		    	System.out.println("thingu is " + e.getKeyChar());
+		    	start = true;
+		    	if (id == KeyEvent.VK_D) {
+		    		newt.setLocation(newt.getX() + 10, newt.getY());
+		        	newt.pause(5);
+		    	}
 			}
 
 			@Override
 			public void keyReleased(KeyEvent e) {
-				// Ignore
-				
+
 			}
 
 		};
@@ -89,6 +73,7 @@ public class Game extends acm.program.GraphicsProgram implements KeyListener
         
         frame.show();
         gc.setFocusable(true);
+        gc.setFocusTraversalKeysEnabled(false);
         frame.setDefaultCloseOperation(frame.EXIT_ON_CLOSE);
         
         gc.addKeyListener(listener);
