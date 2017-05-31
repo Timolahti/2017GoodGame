@@ -16,13 +16,21 @@ import com.sun.prism.paint.Color;
 
 public class Game extends acm.program.GraphicsProgram implements KeyListener
 {
+    private static double heightHealthBars = 30;
+    private static double changeHealthBarWidth = 40;
+    private static boolean newtIsPunching = false;
+    private static boolean leibIsPunching = false;
+    private static boolean start = false;
+    
 	private static GImage background = new GImage("Background.jpg");
 	private static Player newt = new Player("Newt.png");
 	private static Player leib = new Player("Leib.png");
-	
-	private static boolean newtIsPunching = false;
-	private static boolean leibIsPunching = false;
-	private static boolean start = false;
+	private static GRect redRectNewt = new GRect (100,75, 400, heightHealthBars);
+	private static GRect redRectLib = new GRect (780, 75, 400, heightHealthBars);
+	private static GRect greenRectNewt = new GRect (100,75,400,heightHealthBars);
+	//change starting position LIA!!!!!!!!!!!
+	private static GRect greenRectLib = new GRect (780,75,400,heightHealthBars);
+
 	
 	public static void main(String[] args) 
 	{
@@ -119,25 +127,41 @@ public class Game extends acm.program.GraphicsProgram implements KeyListener
         gc.add(background);
         background.sendToBack();
 
-       //creating healthBar for newton --- lia code
-       
-       healthBarNewton healthNewt = new healthBarNewton (100,100, 70, 30);
-       healthNewt.setFillColor(java.awt.Color.GREEN);
-       healthNewt.setFilled(true);
-       healthNewt.setVisible(true);
-       healthNewt.sendToFront();
-       gc.add(healthNewt);
-       
-       //testing
-       GRect backRectNewt = new GRect (100,75, 400, 30);
-       backRectNewt.setFilled(true);
-       backRectNewt.setVisible(true);
-       backRectNewt.setFillColor(java.awt.Color.RED);
-       backRectNewt.sendToFront();
-       gc.add(backRectNewt);
-       System.out.println("printing test rectangle");
+        //making a newton bar --> the red background bar that 
+        //stays the same throughout the game
+        redRectNewt.setFilled(true);
+        redRectNewt.setVisible(true);
+        redRectNewt.setFillColor(java.awt.Color.RED);
+        redRectNewt.sendToFront();
+        gc.add(redRectNewt);
+        System.out.println("printing: red newt bar");
+        
+        //making a libniez bar ---> the red background bar that
+        //stays the same throughout the game
+        redRectLib.setFilled(true);
+        redRectLib.setVisible(true);
+        redRectLib.setFillColor(java.awt.Color.RED);
+        redRectLib.sendToFront();
+        gc.add(redRectLib);
+        System.out.println("printing: red lieb bar");
 
-
+        //making newt green bar
+        greenRectNewt.setFilled(true);
+        greenRectNewt.setVisible(true);
+        greenRectNewt.setFillColor(java.awt.Color.GREEN);
+        greenRectNewt.sendToFront();
+        gc.add(greenRectNewt);
+        System.out.println("printing: green newt bar ");
+        
+        //making lieb green bar
+        greenRectLib.setFilled(true);
+        greenRectLib.setVisible(true);
+        greenRectLib.setFillColor(java.awt.Color.GREEN);
+        greenRectLib.sendToFront();
+        gc.add(greenRectLib);
+        System.out.println("printing: green lib bar");
+        
+        gc.add(new GImage("0.png", 100, 75));
 	}
 	
 	public static void setOpacity(GImage source, int alpha) {
@@ -161,5 +185,14 @@ public class Game extends acm.program.GraphicsProgram implements KeyListener
 		source.setPixelArray(newpixels);
 	}
 	
+	public static void lowerHealthNewt()
+	{
+	    
+	}
+	
+	public static void lowerHealthLib()
+	{
+	    
+	}
 }
 
