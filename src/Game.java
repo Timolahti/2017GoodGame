@@ -25,13 +25,13 @@ public class Game extends acm.program.GraphicsProgram implements KeyListener
     
 	private static GImage background = new GImage("Background.jpg");
 	private static GImage newtDeriv = new GImage("10.png");
-	private static GImage liebDeriv = new GImage("10.png");
+	private static GImage leibDeriv = new GImage("10.png");
 	private static Player newt = new Player("Newt.png");
 	private static Player leib = new Player("Leib.png");
 	private static GRect redRectNewt = new GRect (100,yCoordRect, 400, heightHealthBars);
-	private static GRect redRectLib = new GRect (780, yCoordRect, 400, heightHealthBars);
+	private static GRect redRectLeib = new GRect (780, yCoordRect, 400, heightHealthBars);
 	private static GRect greenRectNewt = new GRect (100,yCoordRect,400,heightHealthBars);
-	private static GRect greenRectLib = new GRect (780,yCoordRect,400,heightHealthBars);
+	private static GRect greenRectLeib = new GRect (780,yCoordRect,400,heightHealthBars);
 
 	
 	public static void main(String[] args) 
@@ -125,11 +125,11 @@ public class Game extends acm.program.GraphicsProgram implements KeyListener
         
         //making a libniez bar ---> the red background bar that
         //stays the same throughout the game
-        redRectLib.setFilled(true);
-        redRectLib.setVisible(true);
-        redRectLib.setFillColor(java.awt.Color.RED);
-        redRectLib.sendToFront();
-        gc.add(redRectLib);
+        redRectLeib.setFilled(true);
+        redRectLeib.setVisible(true);
+        redRectLeib.setFillColor(java.awt.Color.RED);
+        redRectLeib.sendToFront();
+        gc.add(redRectLeib);
         System.out.println("printing: red lieb bar");
 
         //making newt green bar
@@ -141,16 +141,16 @@ public class Game extends acm.program.GraphicsProgram implements KeyListener
         System.out.println("printing: green newt bar ");
         
         //making lieb green bar
-        greenRectLib.setFilled(true);
-        greenRectLib.setVisible(true);
-        greenRectLib.setFillColor(java.awt.Color.GREEN);
-        greenRectLib.sendToFront();
-        gc.add(greenRectLib);
+        greenRectLeib.setFilled(true);
+        greenRectLeib.setVisible(true);
+        greenRectLeib.setFillColor(java.awt.Color.GREEN);
+        greenRectLeib.sendToFront();
+        gc.add(greenRectLeib);
         System.out.println("printing: green lib bar");
         
         //printing initial newt and lieb derivatives #10
         gc.add(newtDeriv, 100, 50);
-        gc.add(liebDeriv, 780, 50);
+        gc.add(leibDeriv, 780, 50);
         //lowerHealthNewt(gc);
 	}
 	
@@ -236,7 +236,10 @@ public class Game extends acm.program.GraphicsProgram implements KeyListener
 	
 	public static void lowerHealthLieb(GCanvas gc)
 	{
-	    //greenRectLib.setLocation(x, );
+	    //changes health bar lieb to slower
+	    System.out.println("Running: lowerHealthLieb");
+        greenRectLeib.setSize(greenRectNewt.getWidth() -changeHealthBarWidth, heightHealthBars );
+        gc.add(greenRectNewt);
 	}
 }
 
