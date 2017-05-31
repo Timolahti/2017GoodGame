@@ -151,6 +151,7 @@ public class Game extends acm.program.GraphicsProgram implements KeyListener
         //printing initial newt and lieb derivatives #10
         gc.add(newtDeriv, 100, 50);
         gc.add(leibDeriv, 780, 50);
+        //lowerHealthLieb(gc);
         //lowerHealthNewt(gc);
 	}
 	
@@ -238,8 +239,59 @@ public class Game extends acm.program.GraphicsProgram implements KeyListener
 	{
 	    //changes health bar lieb to slower
 	    System.out.println("Running: lowerHealthLieb");
-        greenRectLeib.setSize(greenRectNewt.getWidth() -changeHealthBarWidth, heightHealthBars );
-        gc.add(greenRectNewt);
+        greenRectLeib.setSize(greenRectLeib.getWidth() -changeHealthBarWidth, heightHealthBars );
+        greenRectLeib.setLocation(greenRectLeib.getX() + changeHealthBarWidth,yCoordRect);
+        gc.add(greenRectLeib);
+        //changes leib derivative
+        if (leib.getHealth() ==9)
+        {
+            leibDeriv.setImage("9.png");
+            gc.add(leibDeriv); 
+        }
+        else if (leib.getHealth()==8)
+        {
+             leibDeriv.setImage("8.png");
+             gc.add(leibDeriv);
+        }
+        else if (leib.getHealth()==7)
+        {
+             leibDeriv.setImage("7.png");
+             gc.add(leibDeriv);
+        }
+        else if (leib.getHealth()==6)
+        {
+             leibDeriv.setImage("6.png");
+             gc.add(leibDeriv);
+        }
+        else if (leib.getHealth()==5)
+        {
+             leibDeriv.setImage("5.png");
+             gc.add(leibDeriv);
+        }
+        else if (leib.getHealth()==4)
+        {
+             leibDeriv.setImage("4.png");
+             gc.add(leibDeriv);
+        }
+        else if (leib.getHealth()==3)
+        {
+             leibDeriv.setImage("3.png");
+             gc.add(leibDeriv);
+        }
+        else if (leib.getHealth()==2)
+        {
+             leibDeriv.setImage("2.png");
+             gc.add(leibDeriv);
+        }
+        else if (leib.getHealth()==1)
+        {
+             leibDeriv.setImage("1.png");
+             gc.add(leibDeriv);
+        }else if (leib.getHealth()==0)
+        {
+            leibDeriv.setImage("0.png");
+            gc.add(leibDeriv);
+       }
 	}
 }
 
