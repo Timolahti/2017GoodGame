@@ -59,7 +59,7 @@ public class Game extends acm.program.GraphicsProgram implements KeyListener
 
 			@Override
 			public void keyTyped(KeyEvent e) {
-				//ignore
+				if (e.getKeyCode() == KeyEvent.VK_W) newt.jump("");
 			}
 
 			@Override
@@ -84,7 +84,6 @@ public class Game extends acm.program.GraphicsProgram implements KeyListener
         frame.setDefaultCloseOperation(frame.EXIT_ON_CLOSE);
         
         gc.addKeyListener(listener);
-
         
         newt.setInitialLocation(70, 250);
         leib.setInitialLocation(1100, 250);
