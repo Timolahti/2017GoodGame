@@ -22,10 +22,6 @@ public class Player extends GImage {
         y = b;
     }
 
-    public void move(double move) {
-
-    }
-
     /*
      * Jumps
      */
