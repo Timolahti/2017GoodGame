@@ -2,7 +2,8 @@ import acm.graphics.GImage;
 
 public class Player extends GImage {
 
-    public int health = 9;
+
+    public int health = 10;
     private int x;
     private int y;
 
