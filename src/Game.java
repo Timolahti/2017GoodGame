@@ -63,7 +63,8 @@ public class Game extends acm.program.GraphicsProgram implements KeyListener
 		    			newtIsPunching = false;
 		    			System.out.println(newtIsPunching);
 		    			if (newt.intersects(leib) && newtIsPunching == true) {
-		    				lowerHealthLieb(gc);
+		    			    leib.getPunched();
+		    			    lowerHealthLieb(gc);
 		    				System.out.println("leib doing the pain" + newt.getHealth());
 		    			}
 		    			newt.pause(50);
@@ -172,7 +173,7 @@ public class Game extends acm.program.GraphicsProgram implements KeyListener
         //printing initial newt and lieb derivatives #10
         gc.add(newtDeriv, 100, 50);
         gc.add(leibDeriv, 780, 50);
-        //lowerHealthLieb(gc);
+        lowerHealthLieb(gc);
         //lowerHealthNewt(gc);
 	}
 	
