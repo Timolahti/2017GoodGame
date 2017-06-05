@@ -21,21 +21,14 @@ public class Player extends GImage {
         x = a;
         y = b;
     }
-
-    /*
-     * Jumps
-     */
-    public void jump(String image) {
-        double floor = getY();
-        while (getY() < floor + 200) {
-            setLocation(getX(), getY() + 10);
-            pause(200);
-        }
-
-        while (getY() > floor + 200) {
-            setLocation(getX(), getY() - 10);
-            pause(200);
-        }
+    
+    public void resetImage(String image) {
+    	setImage(image);
+    }
+    
+    public void move(double x, String walk) {
+    	setImage(walk);
+    	setLocation(getX() + x, getY());
     }
 
     /*
@@ -45,8 +38,8 @@ public class Player extends GImage {
      */
     public boolean punch(String image, boolean isPunching) {
         setImage(image);
-        pause(50);
-        return isPunching = true;
+        isPunching = true;
+        return isPunching;
     }
 
     /*
