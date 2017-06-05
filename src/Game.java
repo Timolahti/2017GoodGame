@@ -199,7 +199,7 @@ public class Game extends acm.program.GraphicsProgram implements KeyListener
         //printing initial newt and lieb derivatives #10
         gc.add(newtDeriv, 100, 50);
         gc.add(leibDeriv, 780, 50);
-        lowerHealthLieb(gc);
+        //lowerHealthLieb(gc);
         //lowerHealthNewt(gc);
 	}
 	
@@ -281,6 +281,10 @@ public class Game extends acm.program.GraphicsProgram implements KeyListener
            newtDeriv.setImage("0.png");
            gc.add(newtDeriv); 
         }
+	    else if (leib.getHealth() < -1)
+	    {
+	        gc.remove(newtDeriv);
+	    }
 	}
 	
 	public static void lowerHealthLieb(GCanvas gc)
@@ -335,11 +339,16 @@ public class Game extends acm.program.GraphicsProgram implements KeyListener
         {
              leibDeriv.setImage("1.png");
              gc.add(leibDeriv);
-        }else if (leib.getHealth()==0)
+        }
+        else if (leib.getHealth()==0)
         {
             leibDeriv.setImage("0.png");
             gc.add(leibDeriv);
        }
+        else if (leib.getHealth() < 0)
+        {
+            gc.remove(leibDeriv);
+        }
 	}
 }
 
