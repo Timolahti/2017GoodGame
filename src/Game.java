@@ -65,16 +65,39 @@ public class Game extends acm.program.GraphicsProgram implements KeyListener
 //		    			newtIsPunching = false;
 		    			newt.setImage("newt_attack.png");
 		    			newtIsPunching = true;
-		    			System.out.println(newtIsPunching);
+		    			System.out.println("newt is punching " + newtIsPunching);
 		    			if (newt.intersects(leib) && newtIsPunching == true) {
 		    				//leib.getPunched();
 		    				leib.health--;
 		    				lowerHealthLieb(gc);
 		    				System.out.println("leib doing the pain " + newt.getHealth());
 		    			}
-		    			newt.pause(500);
-		    			newt.setImage("newt_ready.png");
 		    			newtIsPunching = false;
+		    			}
+		    		
+		    		if (KeyEvent.VK_RIGHT == id) {
+		    			leib.move(90, "leib_ready.png");
+		    			leib.pause(.01);
+		    			//newt.setImage("newt.png");
+		    			}
+		    		if (KeyEvent.VK_LEFT == id) {
+		    			leib.move(-90, "leib_ready.png");
+		    			leib.pause(.01);
+		    			//newt.setImage("newt.png");
+		    			}
+		    		if (KeyEvent.VK_PERIOD == id ) {
+//		    			newt.punch("newt_attack.png", newtIsPunching);
+//		    			newtIsPunching = false;
+		    			leib.setImage("leib_attack.png");
+		    			leibIsPunching = true;
+		    			System.out.println("leib is punching " + leibIsPunching);
+		    			if (leib.intersects(newt) && leibIsPunching == true) {
+		    				//leib.getPunched();
+		    				leib.health--;
+		    				lowerHealthNewt(gc);
+		    				System.out.println("newt doing the pain " + newt.getHealth());
+		    			}
+		    			leibIsPunching = false;
 		    			}
 		    }
 
