@@ -93,7 +93,7 @@ public class Game extends acm.program.GraphicsProgram implements KeyListener
 		    			System.out.println("leib is punching " + leibIsPunching);
 		    			if (leib.intersects(newt) && leibIsPunching == true) {
 		    				//leib.getPunched();
-		    				leib.health--;
+		    				newt.health--;
 		    				lowerHealthNewt(gc);
 		    				System.out.println("newt doing the pain " + newt.getHealth());
 		    			}
@@ -281,7 +281,6 @@ public class Game extends acm.program.GraphicsProgram implements KeyListener
            newtDeriv.setImage("0.png");
            gc.add(newtDeriv); 
         }
-	    leib.getPunched();
 	}
 	
 	public static void lowerHealthLieb(GCanvas gc)
