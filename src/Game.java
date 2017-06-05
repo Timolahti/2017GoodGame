@@ -26,6 +26,9 @@ public class Game extends acm.program.GraphicsProgram implements KeyListener
 	private static GImage background = new GImage("Background.jpg");
 	private static GImage newtDeriv = new GImage("10.png");
 	private static GImage leibDeriv = new GImage("10.png");
+	
+	private static GCanvas gc = new GCanvas();
+	
 	private static Player newt = new Player("Newt.png");
 	private static Player leib = new Player("Leib.png");
 	private static GRect redRectNewt = new GRect (100,yCoordRect, 400, heightHealthBars);
@@ -46,9 +49,28 @@ public class Game extends acm.program.GraphicsProgram implements KeyListener
 		    	int id = e.getKeyCode();	//this is all to test the key listeners
 		    	System.out.println("thingu is " + e.getKeyChar());
 		    	start = true;
-		    	if (id == KeyEvent.VK_D) {
-		    		newt.setLocation(newt.getX() + 40, newt.getY());
-		        	newt.pause(1);
+		    	switch (id) {
+		    		case (KeyEvent.VK_D): {
+		    			newt.move(150, "newt_ready.png");
+		    			newt.pause(.01);
+		    			}
+		    		case (KeyEvent.VK_A): {
+		    			newt.move(-90, 0);
+		    			newt.pause(.01);
+		    			}
+		    		case (KeyEvent.VK_F): {
+		    			newt.punch("newt_attack.png", newtIsPunching);
+		    			newtIsPunching = false;
+		    			System.out.println(newtIsPunching);
+		    			if (newt.intersects(leib) && newtIsPunching == true) {
+		    				lowerHealthLieb(gc);
+		    				System.out.println("leib doing the pain" + newt.getHealth());
+		    			}
+		    			newt.pause(50);
+		    			newt.setImage("newt_ready.png");
+		    			newtIsPunching = false;
+		    			}
+
 		    	}
 		    }
 
@@ -64,7 +86,6 @@ public class Game extends acm.program.GraphicsProgram implements KeyListener
 
 		};
 		
-	    GCanvas gc = new GCanvas();
 	    gc.setBackground(java.awt.Color.BLACK);
         JFrame frame = new JFrame();
         frame.setSize(width, height);
@@ -84,28 +105,28 @@ public class Game extends acm.program.GraphicsProgram implements KeyListener
         leib.setInitialLocation(1100, 250);
 
         
-        while (count < 51) {
-        	setOpacity(startScreen, count*5);
-        	gc.add(startScreen);
-        	startScreen.sendToBack();
-        	startScreen.pause(50);
-        	count++;
-        }
-        
-
-
-        while (start == false) {
-        	startScreen.pause(10);
-        }
-
-        
-        while (count > 0) {
-        	setOpacity(startScreen, count*5);
-        	gc.add(startScreen);
-        	startScreen.sendToBack();
-        	startScreen.pause(50);
-        	count--;
-        }
+//        while (count < 51) {
+//        	setOpacity(startScreen, count*5);
+//        	gc.add(startScreen);
+//        	startScreen.sendToBack();
+//        	startScreen.pause(50);
+//        	count++;
+//        }
+//        
+//
+//
+//        while (start == false) {
+//        	startScreen.pause(10);
+//        }
+//
+//        
+//        while (count > 0) {
+//        	setOpacity(startScreen, count*5);
+//        	gc.add(startScreen);
+//        	startScreen.sendToBack();
+//        	startScreen.pause(50);
+//        	count--;
+//        }
         
         gc.remove(startScreen);
         gc.add(newt);
@@ -232,6 +253,7 @@ public class Game extends acm.program.GraphicsProgram implements KeyListener
            newtDeriv.setImage("0.png");
            gc.add(newtDeriv); 
         }
+	    leib.getPunched();
 	}
 	
 	public static void lowerHealthLieb(GCanvas gc)
