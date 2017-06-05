@@ -49,30 +49,33 @@ public class Game extends acm.program.GraphicsProgram implements KeyListener
 		    	int id = e.getKeyCode();	//this is all to test the key listeners
 		    	System.out.println("thingu is " + e.getKeyChar());
 		    	start = true;
-		    	switch (id) {
-		    		case (KeyEvent.VK_D): {
-		    			newt.move(150, "newt_ready.png");
+		    	
+		    		if (KeyEvent.VK_D == id) {
+		    			newt.move(90, "newt_ready.png");
 		    			newt.pause(.01);
+		    			//newt.setImage("newt.png");
 		    			}
-		    		case (KeyEvent.VK_A): {
-		    			newt.move(-90, 0);
+		    		if (KeyEvent.VK_A == id) {
+		    			newt.move(-90, "newt_ready.png");
 		    			newt.pause(.01);
+		    			//newt.setImage("newt.png");
 		    			}
-		    		case (KeyEvent.VK_F): {
-		    			newt.punch("newt_attack.png", newtIsPunching);
-		    			newtIsPunching = false;
+		    		if (KeyEvent.VK_F == id ) {
+//		    			newt.punch("newt_attack.png", newtIsPunching);
+//		    			newtIsPunching = false;
+		    			newt.setImage("newt_attack.png");
+		    			newtIsPunching = true;
 		    			System.out.println(newtIsPunching);
 		    			if (newt.intersects(leib) && newtIsPunching == true) {
-		    			    leib.getPunched();
-		    			    lowerHealthLieb(gc);
-		    				System.out.println("leib doing the pain" + newt.getHealth());
+		    				//leib.getPunched();
+		    				leib.health--;
+		    				lowerHealthLieb(gc);
+		    				System.out.println("leib doing the pain " + newt.getHealth());
 		    			}
-		    			newt.pause(50);
+		    			newt.pause(500);
 		    			newt.setImage("newt_ready.png");
 		    			newtIsPunching = false;
 		    			}
-
-		    	}
 		    }
 
 			@Override
