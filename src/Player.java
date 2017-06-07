@@ -2,16 +2,16 @@ import acm.graphics.GImage;
 
 public class Player extends GImage {
 
-
     public int health = 10;
     private int x;
     private int y;
 
+    /*
+     * Constructor
+     */
+    
     public Player(String image) {
-
         super(image);
-
-        // TODO Auto-generated constructor stub
     }
 
     /*
@@ -56,15 +56,4 @@ public class Player extends GImage {
     public void getPunched() {
         health--;
     }
-
-    /*
-     * Enacts death animation, moves player up and over as if uppercutted in the
-     * jaw and changes image to lying down Also returns a boolean false to
-     * determine whether or not the game is over
-     */
-    public boolean die(String death, boolean gameover) {
-        this.setImage(death);
-        return gameover = true;
-    }
-
 }
