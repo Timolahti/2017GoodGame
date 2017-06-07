@@ -16,12 +16,19 @@ import com.sun.prism.paint.Color;
 
 public class Game extends acm.program.GraphicsProgram implements KeyListener
 {
+	/*
+	 * Declaration of private class variables sorted by type
+	 */
+	
     private static double heightHealthBars = 30;
     private static double changeHealthBarWidth = 40;
     private static double yCoordRect = 75;
+    
     private static boolean newtIsPunching = false;
     private static boolean leibIsPunching = false;
     private static boolean start = false;
+    private static boolean newtwin = false;
+    private static boolean leibwin = false;
     
 	private static GImage background = new GImage("Background.jpg");
 	private static GImage newtDeriv = new GImage("10.png");
@@ -43,117 +50,131 @@ public class Game extends acm.program.GraphicsProgram implements KeyListener
 		int height = 750;
 		int count = 0;
 		
+		
 		KeyListener listener = new KeyListener() {	//key control commands
 			
 		    public void keyPressed(KeyEvent e) {
-		    	int id = e.getKeyCode();	//this is all to test the key listeners
-		    	System.out.println("thingu is " + e.getKeyChar());
+		    	int id = e.getKeyCode();
+		    	System.out.println("Key pressed: " + e.getKeyChar());
 		    	start = true;
 		    	
-		    		if (KeyEvent.VK_D == id) {
+		    		if (KeyEvent.VK_D == id) {	//Moves Newton to the right
 		    			newt.move(90, "newt_ready.png");
 		    			newt.pause(.01);
-		    			//newt.setImage("newt.png");
 		    			}
-		    		if (KeyEvent.VK_A == id) {
+		    		
+		    		if (KeyEvent.VK_A == id) {	//Moves Newton to the left
 		    			newt.move(-90, "newt_ready.png");
 		    			newt.pause(.01);
-		    			//newt.setImage("newt.png");
 		    			}
-		    		if (KeyEvent.VK_F == id ) {
-//		    			newt.punch("newt_attack.png", newtIsPunching);
-//		    			newtIsPunching = false;
+		    		
+		    		if (KeyEvent.VK_F == id ) {	//Attack key for Newton
 		    			newt.setImage("newt_attack.png");
 		    			newtIsPunching = true;
 		    			System.out.println("newt is punching " + newtIsPunching);
-		    			if (newt.intersects(leib) && newtIsPunching == true) {
-		    				//leib.getPunched();
-		    				leib.health--;
-		    				lowerHealthLieb(gc);
-		    				System.out.println("leib doing the pain " + newt.getHealth());
-		    			}
+		    			
+			    			if (newt.intersects(leib) && newtIsPunching == true) {
+			    				leib.health--;
+			    				lowerHealthLieb(gc);
+			    				System.out.println("leib doing the pain " + newt.health);
+			    			}
+			    			
 		    			newtIsPunching = false;
 		    			}
 		    		
-		    		if (KeyEvent.VK_RIGHT == id) {
+		    		if (KeyEvent.VK_RIGHT == id) { //Moves Leibniz right
 		    			leib.move(90, "leib_ready.png");
 		    			leib.pause(.01);
-		    			//newt.setImage("newt.png");
 		    			}
-		    		if (KeyEvent.VK_LEFT == id) {
+		    		
+		    		if (KeyEvent.VK_LEFT == id) { //Moves Leibniz left
 		    			leib.move(-90, "leib_ready.png");
 		    			leib.pause(.01);
-		    			//newt.setImage("newt.png");
 		    			}
-		    		if (KeyEvent.VK_PERIOD == id ) {
-//		    			newt.punch("newt_attack.png", newtIsPunching);
-//		    			newtIsPunching = false;
+		    		
+		    		if (KeyEvent.VK_PERIOD == id ) { //Attack key for Leibniz
 		    			leib.setImage("leib_attack.png");
 		    			leibIsPunching = true;
 		    			System.out.println("leib is punching " + leibIsPunching);
-		    			if (leib.intersects(newt) && leibIsPunching == true) {
-		    				//leib.getPunched();
-		    				newt.health--;
-		    				lowerHealthNewt(gc);
-		    				System.out.println("newt doing the pain " + newt.getHealth());
-		    			}
+		    			
+			    			if (leib.intersects(newt) && leibIsPunching == true) {
+			    				newt.health--;
+			    				lowerHealthNewt(gc);
+			    				System.out.println("newt doing the pain " + leib.health);
+			    			}
+		    			
 		    			leibIsPunching = false;
 		    			}
 		    }
 
 			@Override
 			public void keyTyped(KeyEvent e) {
-				
+				//unused
 			}
 
 			@Override
 			public void keyReleased(KeyEvent e) {
-
+				//unused
 			}
 
 		};
 		
 	    gc.setBackground(java.awt.Color.BLACK);
+	    
+	    /*
+	     * Creating the window as well as setting default operations
+	     */
         JFrame frame = new JFrame();
         frame.setSize(width, height);
-        
         frame.getContentPane().add(BorderLayout.CENTER, gc);
         GImage startScreen = new GImage("start.png");
-
-        
         frame.show();
         gc.setFocusable(true);
         gc.setFocusTraversalKeysEnabled(false);
         frame.setDefaultCloseOperation(frame.EXIT_ON_CLOSE);
         
+        /*
+         * Adding key listeners for player control
+         */
         gc.addKeyListener(listener);
         
         newt.setInitialLocation(70, 250);
         leib.setInitialLocation(1100, 250);
 
+       /*
+        * Fading in of start screen containing background information
+        */
+        while (count < 51) {
+        	setOpacity(startScreen, count*5);
+        	gc.add(startScreen);
+        	startScreen.sendToBack();
+        	startScreen.pause(50);
+        	count++;
+        }
         
-//        while (count < 51) {
-//        	setOpacity(startScreen, count*5);
-//        	gc.add(startScreen);
-//        	startScreen.sendToBack();
-//        	startScreen.pause(50);
-//        	count++;
-//        }
-//        
-//
-//
-//        while (start == false) {
-//        	startScreen.pause(10);
-//        }
-//
-//        
-//        while (count > 0) {
-//        	setOpacity(startScreen, count*5);
-//        	gc.add(startScreen);
-//        	startScreen.sendToBack();
-//        	startScreen.pause(50);
-//        	count--;
-//        }
+        /*
+         * Waiting for keypress to resume game
+         */
+        
+        while (start == false) {
+        	startScreen.pause(10);
+        }
+
+        /*
+         * Fading out of start screen
+         */
+        
+        while (count > 0) {
+        	setOpacity(startScreen, count*5);
+        	gc.add(startScreen);
+        	startScreen.sendToBack();
+        	startScreen.pause(50);
+        	count--;
+        }
+        
+        /*
+         * setting background, adding characters
+         */
         
         gc.remove(startScreen);
         gc.add(newt);
@@ -161,9 +182,11 @@ public class Game extends acm.program.GraphicsProgram implements KeyListener
         
         gc.add(background);
         background.sendToBack();
+        
+        /*
+         * making a newton health bar --> the red background bar that stays the same throughout the game
+         */
 
-        //making a newton bar --> the red background bar that 
-        //stays the same throughout the game
         redRectNewt.setFilled(true);
         redRectNewt.setVisible(true);
         redRectNewt.setFillColor(java.awt.Color.RED);
@@ -171,8 +194,10 @@ public class Game extends acm.program.GraphicsProgram implements KeyListener
         gc.add(redRectNewt);
         System.out.println("printing: red newt bar");
         
-        //making a libniez bar ---> the red background bar that
-        //stays the same throughout the game
+        /*
+         * making a libniez bar ---> the red background bar that stays the same throughout the game
+         */
+        
         redRectLeib.setFilled(true);
         redRectLeib.setVisible(true);
         redRectLeib.setFillColor(java.awt.Color.RED);
@@ -180,7 +205,10 @@ public class Game extends acm.program.GraphicsProgram implements KeyListener
         gc.add(redRectLeib);
         System.out.println("printing: red lieb bar");
 
-        //making newt green bar
+        /*
+         * making Newton green bar
+         */
+        
         greenRectNewt.setFilled(true);
         greenRectNewt.setVisible(true);
         greenRectNewt.setFillColor(java.awt.Color.GREEN);
@@ -188,7 +216,10 @@ public class Game extends acm.program.GraphicsProgram implements KeyListener
         gc.add(greenRectNewt);
         System.out.println("printing: green newt bar ");
         
-        //making lieb green bar
+        /*
+         * making Liebniz green bar
+         */
+        
         greenRectLeib.setFilled(true);
         greenRectLeib.setVisible(true);
         greenRectLeib.setFillColor(java.awt.Color.GREEN);
@@ -196,12 +227,46 @@ public class Game extends acm.program.GraphicsProgram implements KeyListener
         gc.add(greenRectLeib);
         System.out.println("printing: green lib bar");
         
-        //printing initial newt and lieb derivatives #10
         gc.add(newtDeriv, 100, 50);
         gc.add(leibDeriv, 780, 50);
-        //lowerHealthLieb(gc);
-        //lowerHealthNewt(gc);
+
+        /*
+         * This keeps the game running until a player loses, then displays the win message
+         */
+        
+        while (newtwin == false && leibwin == false) {
+	        	
+	        GLabel leibwins = new GLabel("Leibniz has discovered calculus!");
+	        leibwins.setFont(new Font("Sans-Serif", Font.BOLD, 60));
+	        leibwins.setColor(java.awt.Color.GREEN);
+	        leibwins.setLocation((gc.getWidth() / 2) - (leibwins.getWidth() / 2), (gc.getHeight() / 2) - (leibwins.getHeight() / 2));
+	        leibwins.setVisible(true);
+	        leibwins.sendToFront();
+	        
+	        GLabel newtwins = new GLabel("Newton has discovered calculus!");
+	        newtwins.setFont(new Font("Sans-Serif", Font.BOLD, 60));
+	        newtwins.setColor(java.awt.Color.GREEN);
+	        newtwins.setLocation((gc.getWidth() / 2) - (newtwins.getWidth() / 2), (gc.getHeight() / 2) - (newtwins.getHeight() / 2));
+	        newtwins.setVisible(true);
+	        newtwins.sendToFront();
+	        
+	        if (leibwin == true) {
+	        	gc.add(leibwins);
+	        	gc.removeKeyListener(listener);
+	        }
+	        
+	        else if (newtwin == true) {
+	        	gc.add(newtwins);
+	        	gc.removeKeyListener(listener);
+	        } 
+        
+        }
+		
 	}
+	
+	/*
+	 * Modifys the opactity of the image
+	 */
 	
 	public static void setOpacity(GImage source, int alpha) {
 		int[][] pixels = source.getPixelArray();
@@ -280,6 +345,7 @@ public class Game extends acm.program.GraphicsProgram implements KeyListener
         {
            newtDeriv.setImage("0.png");
            gc.add(newtDeriv); 
+           leibwin = true;
         }
 	}
 	
@@ -339,6 +405,7 @@ public class Game extends acm.program.GraphicsProgram implements KeyListener
         {
             leibDeriv.setImage("0.png");
             gc.add(leibDeriv);
+            newtwin = true;
        }
 	}
 }
