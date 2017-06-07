@@ -71,12 +71,12 @@ public class Game extends acm.program.GraphicsProgram implements KeyListener
 		    		if (KeyEvent.VK_F == id ) {	//Attack key for Newton
 		    			newt.setImage("newt_attack.png");
 		    			newtIsPunching = true;
-		    			System.out.println("newt is punching " + newtIsPunching);
+		    			System.out.println("Newton is punching " + newtIsPunching);
 		    			
 			    			if (newt.intersects(leib) && newtIsPunching == true) {
 			    				leib.health--;
 			    				lowerHealthLieb(gc);
-			    				System.out.println("leib doing the pain " + newt.health);
+			    				System.out.println("Leibniz taking damage. Health = " + newt.health);
 			    			}
 			    			
 		    			newtIsPunching = false;
@@ -95,12 +95,12 @@ public class Game extends acm.program.GraphicsProgram implements KeyListener
 		    		if (KeyEvent.VK_PERIOD == id ) { //Attack key for Leibniz
 		    			leib.setImage("leib_attack.png");
 		    			leibIsPunching = true;
-		    			System.out.println("leib is punching " + leibIsPunching);
+		    			System.out.println("Leibniz is punching " + leibIsPunching);
 		    			
 			    			if (leib.intersects(newt) && leibIsPunching == true) {
 			    				newt.health--;
 			    				lowerHealthNewt(gc);
-			    				System.out.println("newt doing the pain " + leib.health);
+			    				System.out.println("Newton taking damage. Health = " + leib.health);
 			    			}
 		    			
 		    			leibIsPunching = false;
