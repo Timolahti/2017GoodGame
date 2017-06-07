@@ -347,6 +347,10 @@ public class Game extends acm.program.GraphicsProgram implements KeyListener
            gc.add(newtDeriv); 
            leibwin = true;
         }
+	    else if (leib.getHealth() < -1)
+	    {
+	        gc.remove(newtDeriv);
+	    }
 	}
 	
 	public static void lowerHealthLieb(GCanvas gc)
@@ -401,12 +405,17 @@ public class Game extends acm.program.GraphicsProgram implements KeyListener
         {
              leibDeriv.setImage("1.png");
              gc.add(leibDeriv);
-        }else if (leib.getHealth()==0)
+        }
+        else if (leib.getHealth()==0)
         {
             leibDeriv.setImage("0.png");
             gc.add(leibDeriv);
             newtwin = true;
        }
+        else if (leib.getHealth() < 0)
+        {
+            gc.remove(leibDeriv);
+        }
 	}
 }
 
